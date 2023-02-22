@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.media.MediaPlayer;
 import android.provider.Settings;
+import android.view.Display;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 
 
 public class MusicPlayService extends Service {
@@ -31,5 +34,11 @@ public class MusicPlayService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPlayer.stop();
     }
 }
